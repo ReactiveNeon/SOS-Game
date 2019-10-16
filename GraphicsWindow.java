@@ -4,7 +4,7 @@ import java.io.*;
 import java.awt.*;
 import java.awt.image.*;
 
-public class GraphicsWindow extends JPanel {
+public class GraphicsWindow extends JFrame {
 
    private final String GRID_IMG = "imgs/grid.jpg";
    private final String S_IMG = "imgs/s.jpg";
@@ -14,10 +14,17 @@ public class GraphicsWindow extends JPanel {
    private BufferedImage grid;
    private BufferedImage[] pieces;
 
-   public GraphicsWindow() {
-      super();
+   public GraphicsWindow(int w, int h) {
+      super("SOS Game");
+      
+      setSize(w, h);
+      setDefaultCloseOperation(EXIT_ON_CLOSE);
       
       loadData();
+      
+      repaint();
+      
+      setVisible(true);
    }
    
    private boolean loadData() {
@@ -41,8 +48,7 @@ public class GraphicsWindow extends JPanel {
    
    @Override
    public void paint(Graphics g) {
-      drawGrid(g);
-      g.drawImage(pieces[0], 100, 100, null);
+      
       System.out.println("Painted the screen.");
    }
 }

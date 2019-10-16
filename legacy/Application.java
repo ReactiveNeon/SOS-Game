@@ -5,7 +5,7 @@ public class Application extends JFrame {
     private final int WIDTH = 400;
     private final int HEIGHT = 400;
     
-    private GraphicsWindow graphics;
+    private Game game;
 
     Application() {
       super("SOS Game");
@@ -15,6 +15,9 @@ public class Application extends JFrame {
       
       graphics = new GraphicsWindow();
       add(graphics);
+      
+      game = new Game(graphics);
+      add(game.createGraphics);
       
       setVisible(true);
     }
