@@ -5,12 +5,17 @@ import javax.imageio.*;
 
 class FileManager {
 
-   public static BufferedImage[] loadImages(String[] filePaths) throws IOException {
+   public static BufferedImage[] loadImages(String[] filePaths) {
       List<BufferedImage> data = new ArrayList<BufferedImage>();
       
-      for (String filePath : filePaths) {
-         BufferedImage img = ImageIO.read(new File(filePath));
-         data.add(img);
+      try {
+         for (String filePath : filePaths) {
+            BufferedImage img = ImageIO.read(new File(filePath));
+            data.add(img);
+         }
+      } catch (IOException ioe) {
+         System.out.println("Could not read images.");
+         System.exit(1);
       }
       
       BufferedImage[] imgs = data.toArray(new BufferedImage[0]);
