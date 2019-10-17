@@ -1,7 +1,6 @@
 import javax.swing.*;
 import javax.imageio.*;
 import java.io.*;
-//import java.awt.BorderLayout;
 import java.util.*;
 
 public class Game extends JFrame {
@@ -22,14 +21,11 @@ public class Game extends JFrame {
          instance = this;
       }
       
-      setSize(500, 524);
+      setSize(500, 524);  //TODO
       setDefaultCloseOperation(EXIT_ON_CLOSE);
-      //setLayout(new BorderLayout());
       
       updateBoard();
       add(graphics);
-      
-      //addMouseListener(new MouseHandler());
       
       setVisible(true);
       
@@ -52,6 +48,7 @@ public class Game extends JFrame {
    
    public void drag(int x1, int y1, int x2, int y2) {
       lines.add(new Line(x1, y1, x2, y2));
+      updateBoard();
    }
    
    private void updateBoard() {
@@ -59,7 +56,7 @@ public class Game extends JFrame {
          remove(graphics);
       }
       
-      graphics = new GraphicsWindow(board);
+      graphics = new GraphicsWindow(board, lines.toArray(new Line[0]));
       add(graphics);
       
       revalidate();

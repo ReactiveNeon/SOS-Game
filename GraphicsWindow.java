@@ -14,8 +14,9 @@ public class GraphicsWindow extends JComponent {
    public static MouseHandler mouseHandler = new MouseHandler();  
      
    private int[][] board;
+   private Line[] lines;
    
-   public GraphicsWindow(int[][] board) {
+   public GraphicsWindow(int[][] board, Line[] lines) {
       super();
       
       contains(500, 500);
@@ -23,6 +24,7 @@ public class GraphicsWindow extends JComponent {
       addMouseListener(mouseHandler);
       
       this.board = board;
+      this.lines = lines;
       repaint();
    }
    
@@ -35,6 +37,10 @@ public class GraphicsWindow extends JComponent {
          }
       }
       
+      for (Line line : lines) {
+         g.drawLine(line.x1 * 50 + 25, line.y1 * 50 + 25, line.x2 * 50 + 25, line.y2 * 50 + 25);
+      }
+      
       System.out.println("Painted the screen.");
    }
    
@@ -43,6 +49,6 @@ public class GraphicsWindow extends JComponent {
    }
    
    public static int pixelYToBoard(int pixel) {
-      return (int) Math.floor(pixel / 50);
+      return (int) Math.ceil(pixel / 50);
    }
 }
