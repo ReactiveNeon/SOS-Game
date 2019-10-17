@@ -21,7 +21,7 @@ public class Game extends JFrame {
          instance = this;
       }
       
-      setSize(500, 524);  //TODO
+      setSize(516, 539);  //TODO
       setDefaultCloseOperation(EXIT_ON_CLOSE);
       
       updateBoard();
