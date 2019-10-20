@@ -44,11 +44,7 @@ public class GraphicsWindow extends JComponent {
       System.out.println("Painted the screen.");
    }
    
-   public static int pixelXToBoard(int pixel) {
-      return (int) Math.ceil(pixel / 50);
-   }
-   
-   public static int pixelYToBoard(int pixel) {
+   public static int pixelToBoard(int pixel) {
       return (int) Math.ceil(pixel / 50);
    }
 }

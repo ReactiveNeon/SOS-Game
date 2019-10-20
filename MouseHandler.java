@@ -2,33 +2,28 @@ import java.awt.event.*;
 import java.lang.Math;
 
 public class MouseHandler extends MouseAdapter {
-   
-   public static double dist (double x1, double y1, double x2, double y2) {
-      return Math.sqrt((x2 - x1) + (y2 - y1));
-   }
+
+   private int x1, y1;
    
    public void mousePressed(MouseEvent e) {
-      System.out.println("Mouse down at: " + GraphicsWindow.pixelXToBoard(e.getX()) + ", " + GraphicsWindow.pixelXToBoard(e.getY()));
+      x1 = GraphicsWindow.pixelToBoard(e.getX());
+      y1 = GraphicsWindow.pixelToBoard(e.getY());
    }
 
    public void mouseReleased(MouseEvent e) {
    
-      int x = GraphicsWindow.pixelXToBoard(e.getX());
-      int y = GraphicsWindow.pixelYToBoard(e.getY());
+      int x2 = GraphicsWindow.pixelToBoard(e.getX());
+      int y2 = GraphicsWindow.pixelToBoard(e.getY());
       
       //System.out.println(lastX + " : " + lastY);
-      if (true) {
+      if (x1 == x2 && y1 == y2) {
    
-         Game.instance.click(x, y);
+         Game.instance.click(x1, y1);
          
       } else {
          
-         //Game.instance.drag(x, y, GraphicsWindow.pixelXToBoard(lastX), GraphicsWindow.pixelYToBoard(lastY));
+         Game.instance.drag(x1, y1, x2, y2);
          
       }
-   } 
-   
-   public void mouseClicked(MouseEvent e) {
-      
    }   
 }
