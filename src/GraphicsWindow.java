@@ -19,10 +19,12 @@ public class GraphicsWindow extends JComponent {
    public GraphicsWindow(int[][] board, Line[] lines) {
       super();
       
-      contains(500, 500);
-      
       addMouseListener(mouseHandler);
       
+      updateBoard(board, lines);
+   }
+   
+   public void updateBoard(int[][] board, Line[] lines) {
       this.board = board;
       this.lines = lines;
       repaint();
@@ -44,11 +46,7 @@ public class GraphicsWindow extends JComponent {
       System.out.println("Painted the screen.");
    }
    
-   public static int pixelXToBoard(int pixel) {
-      return (int) Math.ceil(pixel / 50);
-   }
-   
-   public static int pixelYToBoard(int pixel) {
+   public static int pixelToBoard(int pixel) {
       return (int) Math.ceil(pixel / 50);
    }
 }
