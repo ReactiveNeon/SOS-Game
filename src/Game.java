@@ -27,8 +27,15 @@ public class Game extends JFrame {
       graphics = new GraphicsWindow(board, lines.toArray(new Line[0]));
       add(graphics, "Center");
       
-      JButton button = new JButton("Hello");
-      add(button, "South");
+      JPanel buttonGUI = new JPanel();
+      
+      JButton player1 = new JButton("Player 1");
+      buttonGUI.add(player1);
+      
+      JButton player2 = new JButton("Player 2");
+      buttonGUI.add(player2);
+      
+      add(buttonGUI, "South");
             
       setVisible(true);
       
