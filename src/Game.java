@@ -5,32 +5,36 @@ import java.util.*;
 
 public class Game extends JFrame {
    
-   public static Game instance;
+   public static Game instance; // singleton pattern
   
-   private GraphicsWindow graphics;
+   private GraphicsWindow graphics; // the graphics window, custom class
    
-   private int[][] board = new int[10][10];
-   private List<Line> lines = new ArrayList<Line>();
+   private int[][] board = new int[10][10]; // stores the board information
+   private List<Line> lines = new ArrayList<Line>(); // stores the line information
    
    public Game() {
       super("SOS Game");
       
+      // singleton pattern cont.
       if (instance != null) {
          System.out.println("More than one game running");
       } else {
          instance = this;
       }
       
-      setSize(516, 589);
+      setSize(516, 589); // set the size
       setDefaultCloseOperation(EXIT_ON_CLOSE);
       
-      graphics = new GraphicsWindow(board, lines.toArray(new Line[0]));
+      graphics = new GraphicsWindow(board, lines.toArray(new Line[0])); // create the graphics window object
       add(graphics, "Center");
       
       JPanel buttonGUI = new JPanel();
       
       JButton player1 = new JButton("Player 1");
       buttonGUI.add(player1);
+      
+      JLabel score = new JLabel ("0 : 0");
+      buttonGUI.add(score);
       
       JButton player2 = new JButton("Player 2");
       buttonGUI.add(player2);
