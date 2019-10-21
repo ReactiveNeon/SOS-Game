@@ -21,14 +21,15 @@ public class Game extends JFrame {
          instance = this;
       }
       
-      setSize(516, 539);
+      setSize(516, 589);
       setDefaultCloseOperation(EXIT_ON_CLOSE);
       
-      //JPanel board = new JPanel();
-      
       graphics = new GraphicsWindow(board, lines.toArray(new Line[0]));
-      add(graphics);
+      add(graphics, "Center");
       
+      JButton button = new JButton("Hello");
+      add(button, "South");
+            
       setVisible(true);
       
       System.out.println("Created Game.");

@@ -19,6 +19,8 @@ public class GraphicsWindow extends JComponent {
    public GraphicsWindow(int[][] board, Line[] lines) {
       super();
       
+      contains(500, 500);
+      
       addMouseListener(mouseHandler);
       
       updateBoard(board, lines);
