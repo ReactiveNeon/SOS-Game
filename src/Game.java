@@ -12,6 +12,9 @@ public class Game extends JFrame {
    private int[][] board = new int[10][10]; // stores the board information
    private List<Line> lines = new ArrayList<Line>(); // stores the line information
    
+   private int[] points = {0, 0};
+   private JLabel pointDisplay;
+   
    public Game() {
       super("SOS Game");
       
@@ -31,12 +34,14 @@ public class Game extends JFrame {
       JPanel buttonGUI = new JPanel();
       
       JButton player1 = new JButton("Player 1");
+      player1.addActionListener(new ButtonListener(0));
       buttonGUI.add(player1);
       
-      JLabel score = new JLabel ("0 : 0");
-      buttonGUI.add(score);
+      pointDisplay = new JLabel ("0 : 0");
+      buttonGUI.add(pointDisplay);
       
       JButton player2 = new JButton("Player 2");
+      player2.addActionListener(new ButtonListener(1));
       buttonGUI.add(player2);
       
       add(buttonGUI, "South");
@@ -47,6 +52,9 @@ public class Game extends JFrame {
    }
       
    public void click(int x, int y) {
+      if (x > 9 || y > 9)
+         return;
+   
       int index = board[x][y];
       
       if (index == 2) {
@@ -63,6 +71,11 @@ public class Game extends JFrame {
    public void drag(int x1, int y1, int x2, int y2) {
       lines.add(new Line(x1, y1, x2, y2));
       graphics.updateBoard(board, lines.toArray(new Line[0]));
+   }
+   
+   public void updatePoints(int playerIndex) {
+      points[playerIndex] += 1;
+      pointDisplay.setText(points[0] + " : " + points[1]);
    }
    
    public static void main(String[] args) {
